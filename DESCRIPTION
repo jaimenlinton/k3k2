@@ -1,0 +1,17 @@
+Package: k3k2
+Type: Package
+Title: Tilde kappa3 x kappa2 distributional diagram
+Version: 0.1.0
+Authors@R: person("Jaime", "Linton", email="jaimenlinton@gmail.com", role=c("aut", "cre"))
+Description: Compute second and third order log-cumulants, and visualise the tilde kappa3 x kappa2 distributional diagram, with reference curves.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: Rcpp (>= 1.1.0), ggplot2
+LinkingTo: Rcpp
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

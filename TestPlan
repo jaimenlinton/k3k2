@@ -1,0 +1,87 @@
+_______________________________________
+
+k3k2 Distributional Diagram Package
+Test Instructions
+_______________________________________
+_______________________________________
+
+1. After installing <devtools::install_github("the_repo", INSTALL_opts = "--install-tests")>:
+
+   Call <library(k3k2)>
+
+   Downloads all package dependencies and functionality.
+
+_______________________________________
+
+2. Run <devtools::test()>
+
+   Runs all test files in k3k2/tests/testthat
+
+   k3k2 tests:
+   - Checks that class of object is "k3k2".
+   - Checks that test object has 2 samples.
+   - Checks that every sample has 3 values: "data", "kappa2", "kappa3".
+
+   k3k2Diagram tests:
+   - Checks that the k3k2Diagram inherits ggplot2.
+
+   logcumulants tests:
+   - Checks that negative inputs are rejected, and an error message is thrown.
+
+_________________________________________
+
+3. Building a k3k2 object
+
+To build a k3k2 object with 2 samples:
+
+   x1 <- c(1, 2, 3, 4, 5)          #sample 1
+   x2 <- c(5, 10, 1000, 60000)     #sample 2
+   samples <- k3k2(list(x1, x2))   #k3k2 object with 2 samples
+   print.k3k2(samples)             #prints input data, kappa2, and kappa3 for each sample
+
+To check accurate error messages for k3k2 object with 1 sample:
+
+   x1 <- c(-1, 4, 2, 3) #Bad input (negative)
+   samples <- k3k2(x1)
+   #Error: "All input values must be positive for log"
+
+   x1 <- c(NA, 3, 4) #Bad input (NA)
+   samples <- k3k2(x1)
+   #Error: "samples must not contain NA values"
+
+_________________________________________
+
+4. Building a k3k2Diagram object
+
+   diagram <- k3k2Diagram(samples) #input k3k2 object to k3k2 Diagram
+   summary.k3k2Diagram(diagram)
+
+Data must be of class "k3k2":
+
+   x <- c(1, 2, 3, 4, 5) #regular list
+   diagram <- k3k2Diagram(x) #Bad input (not k3k2)
+   #Error: "data must be a k3k2 object"
+
+_________________________________________
+
+5. Visualising k3k2Diagram
+
+   plot_k3k2(diagram)
+
+Displays third order and second order log cumulants (x-axis and y-axis respectively), with reference curves for Gamma and Inverse Gamma, and plots the kappa3 x kappa2 samples.
+
+_________________________________________
+
+For help, can call:
+   vignette("k3k2")
+
+   ?k3k2
+   ?k3k2Diagram
+   ?plot_k3k2
+   ?print.k3k2
+   ?summary.k3k2Diagram
+
+
+
+
+

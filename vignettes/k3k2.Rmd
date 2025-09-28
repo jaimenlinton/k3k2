@@ -1,0 +1,95 @@
+---
+title: "k3k2 Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{k3k2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(k3k2)
+```
+
+### Introduction 
+
+The k3k2 package provides tools for computing and visualising second and third order log-cumulants of distributions. 
+
+In this vignette:
+
+* Creating and Printing k3k2 objects 
+
+* Building and Summarising k3k2Diagram objects 
+
+* Visualising k3k2Diagram objects
+
+### Creating and Printing k3k2 Objects
+
+Supply one or more numeric vectors:
+
+```{r}
+x1 <- c(1, 2, 3, 4, 5)           # Sample 1
+x2 <- c(5, 10, 1000, 60000)      # Sample 2
+
+samples <- k3k2(list(x1, x2))
+print.k3k2(samples)
+```
+Data: User-inputted samples.\
+kappa2: Calculated second order log-cumulant value.\
+kappa3: Calculated third order log-cumulant value.\
+
+### Building and Summarising a k3k2Diagram
+
+```{r}
+diagram <- k3k2Diagram(samples)
+summary.k3k2Diagram(diagram)
+```
+References: Which reference curves are included in visualisation (Gamma, Gamma Inverse as default).\
+k3k2 object: Same as output from <print.k3k2(samples)>.
+
+### Visualising k3k2Diagram 
+
+```{r}
+plot_k3k2(diagram)
+```
+
+This shows $\tilde{\kappa}_3$ on the x-axis and $\tilde{\kappa}_2$ on the y-axis, with reference curves for Gamma and Inverse Gamma distributions.
+
+### Expected Errors
+
+Negative input:
+
+```{r, error=TRUE}
+bad <- c(-1, 2, 3)
+k3k2(bad)
+```
+
+NA values:
+
+```{r, error=TRUE}
+bad <- c(NA, 4, 5)
+k3k2(bad)
+```
+
+Non-k3k2 object in k3k2Diagram:
+
+```{r, error=TRUE}
+k3k2Diagram(c(1,2,3))
+```
+
+### References
+
+Krylov, V., Moser, G., Serpico. S.B., & Zerubia, J. On the Method of Logarithmic Cumulants for Parametric Probability Density Function Estimation. IEEE Transactions on Image Processing, 2013, 22(10), pp.3791-3806. ffhal-00820782f.
+
+Mahapatra, D.K., Frery, A.C., Pradhan, B.B., & Roy, L.P. A review on parametric and semiparametric distributions in characterizing synthetic aperture radar clutter data. IEEE Access, 12:1–1, 2024. ISSN 2169-3536. doi: 10.1109/access.2024.3412733.
+
+
+
+
