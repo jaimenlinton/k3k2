@@ -4,7 +4,14 @@
 \alias{plot_k3k2}
 \title{Plot method for k3k2Diagram objects}
 \usage{
-plot_k3k2(x, ...)
+plot_k3k2(
+  x,
+  line_size = 1,
+  point_size = 3,
+  text_size = 12,
+  colours = c("blue", "red"),
+  ...
+)
 }
 \description{
 Plot method for k3k2Diagram objects

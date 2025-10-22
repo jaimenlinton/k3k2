@@ -4,11 +4,7 @@
 \alias{k3k2Diagram}
 \title{Create a k3k2Diagram object}
 \usage{
-k3k2Diagram(
-  data = NULL,
-  reference = c("Gamma", "Gamma Inverse"),
-  design_parameters = list()
-)
+k3k2Diagram(data = NULL, reference = c("Gamma", "Gamma Inverse"))
 }
 \arguments{
 \item{data}{A k3k2 object (optional)}

@@ -4,6 +4,9 @@ k3k2 Distributional Diagram Package
 Test Instructions
 _______________________________________
 _______________________________________
+0. Before installation:
+
+   Rcpp version >= 1.1.0 is required
 
 1. After installing <devtools::install_github("the_repo", INSTALL_opts = "--install-tests")>:
 
@@ -13,7 +16,7 @@ _______________________________________
 
 _______________________________________
 
-2. Run <devtools::test()>
+2. Run <testthat::test_package("k3k2")>
 
    Runs all test files in k3k2/tests/testthat
 

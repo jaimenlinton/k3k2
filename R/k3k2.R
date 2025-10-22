@@ -33,7 +33,11 @@ print.k3k2 <- function(x) {
   cat("k3k2 object:\n")
   for (i in seq_along(x)) {
     cat("Sample", i, ":\n")
-    cat("  Data:   ", paste(x[[i]]$data, collapse = ", "), "\n")
+    n <- length(x[[i]]$data)
+    show_n <- min(5, n)
+    cat("  Data:   ", paste(round(head(x[[i]]$data, show_n), 4), collapse = ", "))
+    if( n > show_n) cat(", ...")
+    cat("\n")
     cat("  kappa2: ", x[[i]]$kappa2, "\n")
     cat("  kappa3: ", x[[i]]$kappa3, "\n\n")
   }
